@@ -1,0 +1,415 @@
+<!-- client.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chat</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="https://teamshin.shop/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom fonts for this template -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    
+        <!-- Custom styles for this template -->
+        <link href="https://teamshin.shop/css/agency.min.css" rel="stylesheet">
+        <link href="https://teamshin.shop/css/one-page-wonder.min.css" rel="stylesheet">
+
+    <style>
+      .chat_log{ width: 100%; height: 300px; }
+      .name{ width: 10%; }
+      .message{ width: 78%; }
+      .chat{ width: 10%; height:}
+    </style>
+
+    
+<style media="screen">
+  html,
+  body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+  }
+
+
+  /* 메인 화면 grid 설정 */
+  .wrapper {
+      display: grid;
+      grid-template-columns: 50% 50%;
+  }
+
+  /* 메인 화면 오른쪽 이미지 */
+  #main_image {
+      height: 100vh;
+      background-image: url(img/2main_image.PNG);
+      background-position: center;
+      background-size: cover;
+  }
+
+  /* 메인 화면 왼쪽 로고 이미지 */
+  #logo_image {
+      margin-top: 36%;
+      margin-left: 11%;
+      width: 330px;
+      display: block;
+  }
+
+  /* 메인 화면 왼쪽 로고 텍스트 */
+  #logo_text {
+      color: #555555;
+      font-size: 16px;
+      font-weight: 300;
+      margin-left: 12%;
+      margin-top: 50px;
+      font-family: 'Roboto', 'Noto Sans KR', 'Malgun Gothic', 'AppleSDGothicNeo', sans-serif;
+  }
+
+  /* 로고 텍스트 속 강조할 텍스트 */
+  #logo_name {
+      color: #000;
+      font-weight: 400;
+  }
+
+  body {
+      background: #fafafa;
+  }
+
+  .widget-area.blank {
+      background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -ms-box-shadow: none;
+      -o-box-shadow: none;
+      box-shadow: none;
+  }
+
+  body .no-padding {
+      padding: 0;
+  }
+
+  .widget-area {
+      background-color: #fff;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+      -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+      -ms-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+      -o-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+      float: left;
+      margin-top: 30px;
+      padding: 25px 30px;
+      position: relative;
+      width: 100%;
+  }
+
+  .status-upload {
+      background: none repeat scroll 0 0 #f5f5f5;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border-radius: 4px;
+      float: left;
+      width: 100%;
+  }
+
+  .status-upload form {
+      float: left;
+      width: 100%;
+  }
+
+  .status-upload form textarea {
+      background: none repeat scroll 0 0 #fff;
+      border: medium none;
+      -webkit-border-radius: 4px 4px 0 0;
+      -moz-border-radius: 4px 4px 0 0;
+      -ms-border-radius: 4px 4px 0 0;
+      -o-border-radius: 4px 4px 0 0;
+      border-radius: 4px 4px 0 0;
+      color: #777777;
+      float: left;
+      font-family: Lato;
+      font-size: 14px;
+      height: 142px;
+      letter-spacing: 0.3px;
+      padding: 20px;
+      width: 100%;
+      resize: vertical;
+      outline: none;
+      border: 1px solid #F2F2F2;
+  }
+
+  .status-upload ul {
+      float: left;
+      list-style: none outside none;
+      margin: 0;
+      padding: 0 0 0 15px;
+      width: auto;
+  }
+
+  .status-upload ul>li {
+      float: left;
+  }
+
+  .status-upload ul>li>a {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border-radius: 4px;
+      color: #777777;
+      float: left;
+      font-size: 14px;
+      height: 30px;
+      line-height: 30px;
+      margin: 10px 0 10px 10px;
+      text-align: center;
+      -webkit-transition: all 0.4s ease 0s;
+      -moz-transition: all 0.4s ease 0s;
+      -ms-transition: all 0.4s ease 0s;
+      -o-transition: all 0.4s ease 0s;
+      transition: all 0.4s ease 0s;
+      width: 30px;
+      cursor: pointer;
+  }
+
+  .status-upload ul>li>a:hover {
+      background: none repeat scroll 0 0 #606060;
+      color: #fff;
+  }
+
+  .status-upload form button {
+      border: medium none;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border-radius: 4px;
+      color: #fff;
+      float: right;
+      font-family: Lato;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      margin-right: 9px;
+      margin-top: 9px;
+      padding: 6px 15px;
+  }
+
+  .dropdown>a>span.green:before {
+      border-left-color: #2dcb73;
+  }
+
+  .status-upload form button>i {
+      margin-right: 7px;
+  }
+
+  .img-fluid {
+      height: 270px;
+  }
+
+  /* 메뉴바 드롭다운 */
+  .menubar {
+      /* border:none;
+border:0px;
+margin:0px;
+padding:0px; */
+      font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+  }
+
+  .menubar ul {
+      /* background: rgb(109,109,109); */
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+
+  .menubar li {
+      float: left;
+      padding: 0px;
+  }
+
+  .menubar li a {
+      /* background: rgb(109,109,109); */
+      color: #cccccc;
+      display: block;
+      font-weight: normal;
+      padding: 0px 25px;
+      text-align: center;
+      text-decoration: none;
+  }
+
+  .menubar li a:hover,
+  .menubar ul li:hover a {
+      /* background: rgb(71,71,71); */
+      color: #FFFFFF;
+      text-decoration: none;
+  }
+
+  .menubar li ul {
+      display: none;
+      /* 평상시에는 드랍메뉴가 안보이게 하기 */
+      height: auto;
+      padding: 2px;
+      margin: 0px;
+      border: 0px;
+      position: absolute;
+      width: 200px;
+      z-index: 200;
+      /*top:1em;
+/*left:0;*/
+  }
+
+  .menubar li:hover ul {
+      display: block;
+      /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+  }
+
+  .menubar li li {
+      background: rgb(109, 109, 109);
+      display: block;
+      float: none;
+      margin: 0px;
+      padding: 0px;
+      width: 200px;
+  }
+
+  .menubar li:hover li a {
+      background: none;
+  }
+
+  .menubar li ul a {
+      display: block;
+      height: 50px;
+      font-size: 12px;
+      font-style: normal;
+      margin: 0px;
+      padding: 15px 20px 0px 15px;
+      text-align: left;
+  }
+
+  .menubar li ul a:hover,
+  .menubar li ul li:hover a {
+      background: rgb(71, 71, 71);
+      border: 0px;
+      color: #ffffff;
+      text-decoration: none;
+  }
+
+  .menubar p {
+      clear: left;
+  }
+
+  footer{ position:fixed; 
+  left:0px; 
+  bottom:0px; 
+  height:60px; 
+  width:100%; 
+  }
+
+</style>
+
+  </head>
+  <body>
+
+     <!-- Navigation -->
+     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="position: unset;" id="mainNav">
+      <div class="container menubar">
+          <a class="navbar-brand js-scroll-trigger" href="https://teamshin.shop/index.php">Team Nova</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              Menu
+              <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav text-uppercase ml-auto">
+                  <li class="nav-item">
+                      <a class="nav-link js-scroll-trigger" href="https://teamshin.shop/index.php">홈</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link js-scroll-trigger" href="#">카테고리</a>
+                      <ul>
+                          <li><a href="https://teamshin.shop/item/listings1.php?category=1">상품 카테고리1</a></li>
+                          <li><a href="https://teamshin.shop/item/listings1.php?category=2">상품 카테고리2</a></li>
+                          <li><a href="https://teamshin.shop/item/listings1.php?category=3">상품 카테고리3</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item" id="item_write">
+                      <a class="nav-link js-scroll-trigger" href="https://teamshin.shop/write.php">글쓰기</a>
+                  </li>
+
+              </ul>
+          </div>
+      </div>
+  </nav>
+    
+    <!-- 채팅창 -->
+    <div style="width: 800px; margin: auto; margin-top: 5%;">
+        <h3>채팅 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 접속자</h3>
+    <div>
+      <textarea id="chatLog" class="chat_log" style="width: 75%;" readonly></textarea>
+      <textarea id="user_index" class="user_index" style="width: 23.7%; height: 300px;" readonly></textarea>
+    </div>
+    <form id="chat">
+      <input id="name" class="name" type="text" readonly>
+      <input id="message" class="message" type="text">
+      <input type="submit" class="chat btn btn-dark" value="chat"/>
+    </form>
+    <div id="box" class="box">
+    </div>
+  </div>
+    <!-- 채팅창 끝 -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black" style="margin-top:5%">
+      <div class="container">
+          <p class="m-0 text-center text-white small">Team Nova &copy; 5기 신인재</p>
+      </div>
+      <!-- /.container -->
+  </footer>
+
+      <!-- 채팅 관련  -->
+      <script src="/socket.io/socket.io.js"></script> <!-- 1 -->
+      <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+      <script>
+        var socket = io(); //1
+        $('#chat').on('submit', function(e){ //2
+          socket.emit('send message', $('#name').val(), $('#message').val());
+          $('#message').val('');
+          $('#message').focus();
+          e.preventDefault();
+        });
+
+        socket.on('receive message', function(msg){ //3
+          $('#chatLog').append(msg+'\n');
+          $('#chatLog').scrollTop($('#chatLog')[0].scrollHeight);
+        });
+
+        socket.on('chat_log_file', function(msg){ //3
+          $('#chatLog').text('');
+          $('#chatLog').append(msg);
+          $('#chatLog').scrollTop($('#chatLog')[0].scrollHeight);
+        });
+        
+        socket.on('user list', function(name){ //3
+          console.log('gd');
+          $('#user_index').val(name);
+        });
+
+        socket.on('change name', function(name){ //4
+          $('#name').val(name);
+        });
+      </script>
+      <!-- 채팅 관련  -->
+
+  </body>
+
+</html>
